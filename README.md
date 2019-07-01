@@ -9,7 +9,7 @@
 <img src="https://user-images.githubusercontent.com/4370550/56803568-460e5800-6823-11e9-8a70-25ab4b7e32ea.png" width="275">
 </div>
 
-##  Meet Storyscript
+## &#128075; Meet Storyscript
 The [DSL](https://en.wikipedia.org/wiki/Domain-specific_language) for **Application Storytelling**.
 Develop rapidly, deploy natively to the cloud and focus on what matters most: business-logic.
 Designed with :heart: by [Storyscript](https://storyscript.io) on a mission to bring application development to the next level.
@@ -31,9 +31,9 @@ when http server listen path: '/' as request     # Serverless
 $ story deploy  # Zero-devop deployments into Kubernetes
 ```
 
-Open Source for a delicious application development. :sparkles::cake::sparkles:
+&#128175;Open Source for a delicious application development. :sparkles::cake::sparkles:
 
-> Choose: hosted **Storyscript Cloud** or `helm install story` for on-premises deployments.
+> &#128640;Choose: hosted **Storyscript Cloud** or `helm install story` for on-premises deployments.
 
 ## Installation
 
@@ -87,6 +87,6 @@ The list of contributors is available [here](https://github.com/storyscript/stor
 
 ## Issues
 
-* For problems _directly related to the CLI_: [Add an issue on GitHub.](https://github.com/storyscript/cli/issues/new)
+* For problems directly related to the CLI: [Add an issue on GitHub.](https://github.com/storyscript/cli/issues/new)
 * To share feedback and suggestions: [We appreciate your ideas and honesty!](https://asyncy.click/feedback)
 * For other issues: [Submit a support ticket.](mailto:support@storyscript.io)
