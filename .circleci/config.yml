@@ -38,15 +38,6 @@ jobs:
                 #paths:
                     #- ./venv
                 #key: v1-dependencies-{{ checksum "setup.py" }}
-            - run:
-                name: Apply CodeCov workaround for excluding lines
-                command: |
-                  # Workaround for https://github.com/codecov/codecov-python/issues/107
-                  sed 's/internal_assert(0)/# ignored for CodeCov/' \
-                  -i $(find storyscript -type f -name '*.py')
-                  #sed 's/from.*internal_assert/# ignored for CodeCov/' \
-                  #-i $(find storyscript -type f -name '*.py' \
-                  #  -not -name '*__init__.py')
 
             - run:
                 name: run pep8 linter

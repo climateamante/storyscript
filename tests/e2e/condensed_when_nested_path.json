@@ -43,7 +43,7 @@
       ],
       "enter": "4",
       "parent": "2",
-      "src": "  \twhen log level: 'normal' as logger",
+      "src": "  \twhen log level: \"normal\" as logger",
       "next": "4"
     },
     "4": {

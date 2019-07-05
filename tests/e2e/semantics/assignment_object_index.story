@@ -1,2 +1,2 @@
-a = {"b": 1}
+a = my_service call
 a.b = 100

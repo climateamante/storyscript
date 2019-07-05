@@ -3,4 +3,4 @@ Error: syntax error in story at line 2, column 2
 2|      event = 2
         ^^^^^^^
 
-E0127: `event` is readonly and can not be assigned to.
+E0100: Can't assign `int` to `Object`

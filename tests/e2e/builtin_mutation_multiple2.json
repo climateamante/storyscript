@@ -38,8 +38,8 @@
           "paths": [
             "message",
             {
-              "$OBJECT": "dot",
-              "dot": "text"
+              "$OBJECT": "string",
+              "string": "text"
             }
           ]
         },
@@ -74,7 +74,7 @@
           ]
         }
       ],
-      "src": "username = message.text.split(by: \"whitelist \")"
+      "src": "username = message[\"text\"].split(by: \"whitelist \")"
     }
   },
   "entrypoint": "1"

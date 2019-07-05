@@ -150,8 +150,7 @@ implicit_assigns = {
     'Map[string,int]': ['Map[string,int]'],
     'Map[string,string]': ['Map[string,string]'],
     'none': [],
-    # at the moment SS only has app as object which is const
-    'object': [],
+    'object': ['object'],
     'any': [k for k in all_types.keys() if k != 'none'],
 }
 

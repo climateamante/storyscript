@@ -124,7 +124,7 @@ class ErrorCodes:
     )
     type_index_incompatible = (
         'E0104',
-        "`{left}` can't be indexed with `{right}`"
+        "`{left}` can't be indexed with `{name}` of type `{right}`"
     )
     foreach_output_children = (
         'E0105',
@@ -198,6 +198,18 @@ class ErrorCodes:
     return_type_readonly = (
         'E0128',
         '`{source}` is readonly and can not be returned.'
+    )
+    single_quotes = (
+        'E0129',
+        'Single quotes are not allowed.'
+    )
+    if_expression_boolean = (
+        'E0130',
+        'If expression must evaluate to a `boolean`, but is `{type}`'
+    )
+    type_dot_incompatible = (
+        'E0131',
+        "`{left}` can't be dot-accessed with `{name}` of type `{right}`"
     )
 
     @staticmethod

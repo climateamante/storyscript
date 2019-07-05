@@ -12,7 +12,7 @@
           "string": "   a b"
         }
       ],
-      "src": "a = '   a"
+      "src": "a = \"   a"
     }
   },
   "entrypoint": "1"

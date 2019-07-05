@@ -40,7 +40,7 @@
       ],
       "enter": "3",
       "parent": "1",
-      "src": "  when listen path:'/health' method:'get' as client",
+      "src": "  when listen path:\"/health\" method:\"get\" as client",
       "next": "3"
     },
     "3": {

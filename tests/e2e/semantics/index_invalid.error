@@ -3,4 +3,4 @@ Error: syntax error in story at line 3, column 5
 3|    b = a[t]
           ^^^
 
-E0104: `List[int]` can't be indexed with `time`
+E0104: `List[int]` can't be indexed with `t` of type `time`

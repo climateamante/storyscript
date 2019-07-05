@@ -49,7 +49,7 @@
         }
       ],
       "enter": "2",
-      "src": "if (weather tommorow where:'Amsterdam') == 'horrible'",
+      "src": "if (weather tommorow where:\"Amsterdam\") == \"horrible\"",
       "next": "2"
     },
     "2": {
@@ -68,7 +68,7 @@
         }
       ],
       "parent": "1",
-      "src": "\tlogger echo message:'oh no!'"
+      "src": "\tlogger echo message:\"oh no!\""
     }
   },
   "services": [

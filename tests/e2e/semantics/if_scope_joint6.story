@@ -1,4 +1,4 @@
-if 0
+if 0 == 0
 	a = 0
 else
 	originalCount = 0

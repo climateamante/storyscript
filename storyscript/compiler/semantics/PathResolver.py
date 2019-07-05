@@ -1,6 +1,13 @@
+# -*- coding: utf-8 -*-
+from collections import namedtuple
+
+from storyscript.compiler.semantics.types.Indexing import IndexKind
 from storyscript.compiler.semantics.types.Types import BooleanType, \
     FloatType, IntType, RangeType, StringType
 from storyscript.parser import Tree
+
+
+NamedPath = namedtuple('NamedPath', ('value', 'type', 'kind'))
 
 
 class PathResolver:
@@ -25,40 +32,45 @@ class PathResolver:
         """
         assert tree.data == 'path'
         main_name = tree.child(0).value
-        names = [(main_name, tree.child(0).value)]
+        names = [NamedPath(main_name, main_name, IndexKind.FIRST)]
         for fragment in tree.children[1:]:
             child = fragment.child(0)
-            name = None
+            kind = IndexKind.INDEX
             if isinstance(child, Tree):
                 if child.data == 'string':
-                    value = StringType.instance()
+                    type_ = StringType.instance()
+                    value = child.child(0).value
                 elif child.data == 'boolean':
-                    value = BooleanType.instance()
+                    type_ = BooleanType.instance()
+                    value = child.child(0).value
                 elif child.data == 'range':
-                    value = RangeType.instance()
+                    type_ = RangeType.instance()
+                    value = 'range'
                 elif child.data == 'number':
-                    value = self.number(child)
+                    type_ = self.number(child)
+                    value = child.child(0).value
                 else:
                     assert child.data == 'path'
-                    value = self.path(child)
+                    type_ = self.path(child)
+                    value = child.child(0).value
             else:
-                name = child.value
                 assert child.type == 'NAME'
-                value = StringType.instance()
-            names.append((name, value))
+                kind = IndexKind.DOT
+                value = child.value
+                type_ = StringType.instance()
+            names.append(NamedPath(value, type_, kind))
         return names
 
     def path(self, tree):
         assert tree.data == 'path'
         path_names = self.names(tree)
-        for name, p in path_names:
+        for p in path_names:
             # ignore internal variables
-            if name is None or name.startswith('__p-'):
+            if p.kind == IndexKind.INDEX or p.value.startswith('__p-'):
                 continue
-            tree.expect('-' not in name,
-                        'path_name_invalid_char', path=name, token='-')
-            tree.expect('/' not in name,
-                        'path_name_invalid_char', path=name, token='/')
-        # ["name", <types>...]
-        paths = [p[1] for p in path_names]
-        return self.symbol_resolver.resolve(tree, paths)
+            tree.expect('-' not in p.value,
+                        'path_name_invalid_char', path=p.value, token='-')
+            tree.expect('/' not in p.value,
+                        'path_name_invalid_char', path=p.value, token='/')
+        symbol = path_names.pop(0).value
+        return self.symbol_resolver.resolve(tree, symbol, path_names)

@@ -1,2 +1,2 @@
-a = {}
-a.b = 'bar'
+a = my_service call
+a.b = "bar"

@@ -3,4 +3,4 @@ Error: syntax error in story at line 2, column 5
 2|    b = a[true]
           ^^^^^^
 
-E0104: `Map[int,int]` can't be indexed with `boolean`
+E0104: `Map[int,int]` can't be indexed with `true` of type `boolean`

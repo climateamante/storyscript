@@ -1,0 +1,6 @@
+Error: syntax error in story at line 2, column 7
+
+2|    b = "foo{a.long.path}"
+            ^^^^^^^^^^^
+
+E0131: `Map[any,any]` can't be dot-accessed with `long` of type `string`

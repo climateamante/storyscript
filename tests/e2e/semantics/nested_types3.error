@@ -3,4 +3,4 @@ Error: syntax error in story at line 7, column 5
 7|    c = b[20]["bar"]
           ^^^^^^^^^^^
 
-E0104: `List[string]` can't be indexed with `string`
+E0104: `List[string]` can't be indexed with `bar` of type `string`

@@ -3,4 +3,4 @@ Error: syntax error in story at line 2, column 1
 2|    a[0.5] = 5
       ^^^^^
 
-E0104: `List[int]` can't be indexed with `float`
+E0104: `List[int]` can't be indexed with `0.5` of type `float`

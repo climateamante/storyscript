@@ -1,2 +1,2 @@
 while true
-		a = '{}	'
+		a = "{}	"

@@ -27,12 +27,8 @@
           "paths": [
             "a",
             {
-              "$OBJECT": "dot",
-              "dot": "long"
-            },
-            {
-              "$OBJECT": "dot",
-              "dot": "path"
+              "$OBJECT": "string",
+              "string": "long"
             }
           ]
         }
@@ -70,7 +66,7 @@
           ]
         }
       ],
-      "src": "b = \"foo{a.long.path}\""
+      "src": "b = \"foo{a[\\\"long\\\"]}\""
     }
   },
   "entrypoint": "1"

@@ -1,0 +1,6 @@
+Error: syntax error in story at line 1, column 5
+
+1|    s = 'string'
+          ^
+
+E0129: Single quotes are not allowed.

@@ -83,14 +83,6 @@ def test_values_float_negative():
     assert entity.values.number.child(0) == Token('FLOAT', '-3.14')
 
 
-def test_values_single_quoted_string():
-    result = parse("'red'\n")
-    expression = result.block.rules.absolute_expression.expression
-    entity = get_entity(expression)
-    expected = entity.values.string.child(0)
-    assert expected == Token('SINGLE_QUOTED', "'red'")
-
-
 def test_values_double_quoted_string():
     result = parse('"red"\n')
     expression = result.block.rules.absolute_expression.expression
@@ -119,14 +111,14 @@ def test_values_list_empty():
 
 
 def test_values_object():
-    result = parse("{'color':'red','shape':1}\n")
+    result = parse('{"color":"red","shape":1}\n')
     expression = result.block.rules.absolute_expression.expression
     entity = get_entity(expression)
     values = entity.values
     key_value = values.map.key_value
-    assert key_value.string.child(0) == Token('SINGLE_QUOTED', "'color'")
+    assert key_value.string.child(0) == Token('DOUBLE_QUOTED', '"color"')
     entity = get_entity(key_value.child(1).expression)
-    assert entity.values.string.child(0) == Token('SINGLE_QUOTED', "'red'")
+    assert entity.values.string.child(0) == Token('DOUBLE_QUOTED', '"red"')
 
 
 def test_values_regular_expression():

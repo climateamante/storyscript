@@ -1,0 +1,95 @@
+{
+  "tree": {
+    "1": {
+      "method": "function",
+      "ln": "1",
+      "output": [
+        "int"
+      ],
+      "function": "divideByZero",
+      "enter": "2",
+      "src": "function divideByZero returns int",
+      "next": "2"
+    },
+    "2": {
+      "method": "expression",
+      "ln": "2",
+      "name": [
+        "a"
+      ],
+      "args": [
+        {
+          "$OBJECT": "int",
+          "int": 10
+        }
+      ],
+      "parent": "1",
+      "src": "   a = 10",
+      "next": "3"
+    },
+    "3": {
+      "method": "expression",
+      "ln": "3",
+      "name": [
+        "b"
+      ],
+      "args": [
+        {
+          "$OBJECT": "int",
+          "int": 0
+        }
+      ],
+      "parent": "1",
+      "src": "   b = 0",
+      "next": "4"
+    },
+    "4": {
+      "method": "expression",
+      "ln": "4",
+      "name": [
+        "c"
+      ],
+      "args": [
+        {
+          "$OBJECT": "expression",
+          "expression": "division",
+          "values": [
+            {
+              "$OBJECT": "path",
+              "paths": [
+                "a"
+              ]
+            },
+            {
+              "$OBJECT": "path",
+              "paths": [
+                "b"
+              ]
+            }
+          ]
+        }
+      ],
+      "parent": "1",
+      "src": "   c = a / b",
+      "next": "5"
+    },
+    "5": {
+      "method": "return",
+      "ln": "5",
+      "args": [
+        {
+          "$OBJECT": "path",
+          "paths": [
+            "a"
+          ]
+        }
+      ],
+      "parent": "1",
+      "src": "   return a"
+    }
+  },
+  "entrypoint": "1",
+  "functions": {
+    "divideByZero": "1"
+  }
+}

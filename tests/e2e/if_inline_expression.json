@@ -15,14 +15,31 @@
       "ln": "1",
       "args": [
         {
-          "$OBJECT": "path",
-          "paths": [
-            "__p-1.1"
+          "$OBJECT": "expression",
+          "expression": "equal",
+          "values": [
+            {
+              "$OBJECT": "type_cast",
+              "type": {
+                "$OBJECT": "type",
+                "type": "string"
+              },
+              "value": {
+                "$OBJECT": "path",
+                "paths": [
+                  "__p-1.1"
+                ]
+              }
+            },
+            {
+              "$OBJECT": "string",
+              "string": "foo"
+            }
           ]
         }
       ],
       "enter": "2",
-      "src": "if (random numbers)",
+      "src": "if (random numbers) == \"foo\"",
       "next": "2"
     },
     "2": {

@@ -81,15 +81,31 @@
       "ln": "7",
       "args": [
         {
-          "$OBJECT": "path",
-          "paths": [
-            "a"
+          "$OBJECT": "expression",
+          "expression": "not",
+          "values": [
+            {
+              "$OBJECT": "expression",
+              "expression": "less_equal",
+              "values": [
+                {
+                  "$OBJECT": "path",
+                  "paths": [
+                    "a"
+                  ]
+                },
+                {
+                  "$OBJECT": "int",
+                  "int": 0
+                }
+              ]
+            }
           ]
         }
       ],
       "enter": "8",
       "exit": "9",
-      "src": "if a",
+      "src": "if a > 0",
       "next": "8"
     },
     "8": {

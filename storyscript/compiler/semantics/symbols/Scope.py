@@ -56,7 +56,7 @@ class Scope:
         scope = cls(parent=None)
         # insert global symbols
         app = Symbol(name='app', type_=ObjectType.instance(),
-                     storage_class=StorageClass.read)
+                     storage_class=StorageClass.read())
         scope.insert(app)
         return scope
 

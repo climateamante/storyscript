@@ -1,3 +1,3 @@
-a = '   aaa
+a = "   aaa
   bbb
-  cc'
+  cc"

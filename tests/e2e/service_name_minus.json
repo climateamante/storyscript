@@ -18,7 +18,7 @@
           }
         }
       ],
-      "src": "a = kennethreitz-uritool parse uri:'https://github.com/'"
+      "src": "a = kennethreitz-uritool parse uri:\"https://github.com/\""
     }
   },
   "services": [

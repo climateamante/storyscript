@@ -4,7 +4,7 @@ foreach items as item
 
 a = 2
 
-if a
+if a > 0
 	a = 0
 else
 	b = 0

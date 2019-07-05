@@ -3,4 +3,4 @@ Error: syntax error in story at line 2, column 5
 2|    a = b[:-1]
           ^^^^^
 
-E0104: `int` can't be indexed with `range`
+E0104: `int` can't be indexed with `range` of type `range`

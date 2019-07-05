@@ -1,6 +1,6 @@
 Error: syntax error in story at line 2, column 1
 
 2|    a.k[1] = "b"
-      ^^^^^^^^
+      ^^^^^
 
-E0100: Can't assign `string` to `boolean`
+E0131: `Map[string,List[boolean]]` can't be dot-accessed with `k` of type `string`

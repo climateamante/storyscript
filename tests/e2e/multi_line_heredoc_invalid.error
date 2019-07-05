@@ -1,6 +1,0 @@
-Error: syntax error in story at line 1, column 17
-
-1|    a = '''aaa'''bbb'''
-                      ^
-
-E0007: Missing value after `=`

@@ -1,1 +1,1 @@
-my_string = "Answer: {my_service ask q:'question'}"
+my_string = "Answer: {my_service ask q:\"question\"}"

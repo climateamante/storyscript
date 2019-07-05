@@ -3,4 +3,4 @@ Error: syntax error in story at line 2, column 1
 2|    a.b = true
       ^^^
 
-E0104: `Map[int,boolean]` can't be indexed with `string`
+E0131: `Map[int,boolean]` can't be dot-accessed with `b` of type `string`

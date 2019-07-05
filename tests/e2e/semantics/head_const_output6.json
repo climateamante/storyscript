@@ -1,0 +1,75 @@
+{
+  "tree": {
+    "1": {
+      "method": "when",
+      "ln": "1",
+      "output": [
+        "res"
+      ],
+      "service": "client",
+      "command": "listen",
+      "args": [
+        {
+          "$OBJECT": "arg",
+          "name": "method",
+          "arg": {
+            "$OBJECT": "string",
+            "string": "post"
+          }
+        },
+        {
+          "$OBJECT": "arg",
+          "name": "path",
+          "arg": {
+            "$OBJECT": "string",
+            "string": "/foo"
+          }
+        }
+      ],
+      "enter": "2",
+      "src": "when client listen method:\"post\" path:\"/foo\" as res",
+      "next": "2"
+    },
+    "2": {
+      "method": "expression",
+      "ln": "2",
+      "name": [
+        "foo"
+      ],
+      "args": [
+        {
+          "$OBJECT": "path",
+          "paths": [
+            "res",
+            {
+              "$OBJECT": "string",
+              "string": "foo"
+            }
+          ]
+        }
+      ],
+      "parent": "1",
+      "src": "       foo = res[\"foo\"]",
+      "next": "3"
+    },
+    "3": {
+      "method": "expression",
+      "ln": "3",
+      "name": [
+        "foo"
+      ],
+      "args": [
+        {
+          "$OBJECT": "int",
+          "int": 2
+        }
+      ],
+      "parent": "1",
+      "src": "       foo = 2"
+    }
+  },
+  "services": [
+    "client"
+  ],
+  "entrypoint": "1"
+}

@@ -1,2 +1,2 @@
 a = {}
-b = "foo{a.long.path}"
+b = "foo{a[\"long\"]}"

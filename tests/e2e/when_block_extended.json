@@ -93,7 +93,7 @@
       ],
       "enter": "6",
       "parent": "5.1",
-      "src": "when other_service command listen path:'/foo'",
+      "src": "when other_service command listen path:\"/foo\"",
       "next": "6"
     },
     "6": {
@@ -134,7 +134,7 @@
       ],
       "enter": "8",
       "parent": "7.1",
-      "src": "when other_service command listen path:'/foo' as li",
+      "src": "when other_service command listen path:\"/foo\" as li",
       "next": "8"
     },
     "8": {

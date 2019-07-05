@@ -4,21 +4,6 @@
       "method": "expression",
       "ln": "1",
       "name": [
-        "a"
-      ],
-      "args": [
-        {
-          "$OBJECT": "string",
-          "string": "b.\n.\\.'.c"
-        }
-      ],
-      "src": "a = 'b.\\n.\\\\.\\'.c'",
-      "next": "2"
-    },
-    "2": {
-      "method": "expression",
-      "ln": "2",
-      "name": [
         "b"
       ],
       "args": [

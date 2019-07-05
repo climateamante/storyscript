@@ -1,6 +1,6 @@
 Error: syntax error in story at line 1, column 6
 
-1|    when listen path:'/health' method:'get' as client
+1|    when listen path:"/health" method:"get" as client
            
 
 E0051: No service parent has been found.

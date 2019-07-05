@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from storyscript.compiler.semantics.types.Indexing import IndexKind
 
 
 def singleton(fn):
@@ -153,9 +154,10 @@ class BaseType:
         """
         return True
 
-    def index(self, index_type):
+    def index(self, index_type, index_kind):
         """
-        Returns the type resulting from an index operation with `index_type`.
+        Returns the type resulting from an index operation with `index_type` of
+        kind `index_kind` ('index' or 'dot')
         """
         return None
 
@@ -252,7 +254,7 @@ class IntType(BaseType):
     def op(self, op):
         return self
 
-    def index(self, other):
+    def index(self, other, kind):
         return None
 
     @singleton
@@ -337,7 +339,10 @@ class StringType(BaseType):
             return self
         return None
 
-    def index(self, other):
+    def index(self, other, kind):
+        # no dot on strings
+        if kind != IndexKind.INDEX:
+            return None
         # only numeric indices or  ranges
         if isinstance(other, RangeType):
             return self
@@ -480,7 +485,10 @@ class ListType(BaseType):
             return None
         return ListType(im_to)
 
-    def index(self, other):
+    def index(self, other, kind):
+        # no dot on lists
+        if kind != IndexKind.INDEX:
+            return None
         # only numeric indices or range indices
         if isinstance(other, RangeType):
             return self
@@ -548,7 +556,10 @@ class MapType(BaseType):
             return None
         return MapType(im_key, im_value)
 
-    def index(self, other):
+    def index(self, other, kind):
+        # no dot on maps
+        if kind != IndexKind.INDEX:
+            return None
         if other.implicit_to(self.key) is not None:
             return self.value
         return None
@@ -595,7 +606,9 @@ class ObjectType(BaseType):
     def op(self, op):
         return None
 
-    def index(self, other):
+    def index(self, other, kind):
+        if kind == IndexKind.DOT:
+            return AnyType.instance()
         if other.implicit_to(StringType.instance()) is not None:
             return AnyType.instance()
         return None
@@ -631,7 +644,7 @@ class AnyType(BaseType):
     def can_be_assigned(self, other):
         return True
 
-    def index(self, other):
+    def index(self, other, kind):
         if other.hashable():
             return self
         # type couldn't have been a key

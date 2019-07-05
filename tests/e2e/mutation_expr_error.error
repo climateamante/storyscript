@@ -1,6 +1,6 @@
 Error: syntax error in story at line 1, column 15
 
-1|    a = 'a' + 'b' contains item: 'c'
+1|    a = "a" + "b" contains item: "c"
                     ^
 
 E0007: Missing value after `=`

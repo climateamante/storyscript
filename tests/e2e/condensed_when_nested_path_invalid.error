@@ -1,6 +1,6 @@
 Error: syntax error in story at line 3, column 9
 
-3|        when log level: 'normal'
+3|        when log level: "normal"
                ^^^
 
 E0108: Service output `log` must be unique. Use `as outputName`

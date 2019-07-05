@@ -1,6 +1,6 @@
-if 0
+if 0 == 0
 	originalCount = 0
-else if 0
+else if 0 != 0
 	originalCount = 0
 else
 	a = 0

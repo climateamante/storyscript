@@ -40,7 +40,7 @@
       ],
       "enter": "3",
       "parent": "1",
-      "src": "    when client listen method:'get' path:'/' as request",
+      "src": "    when client listen method:\"get\" path:\"/\" as request",
       "next": "3"
     },
     "3": {
@@ -59,7 +59,7 @@
         }
       ],
       "parent": "2",
-      "src": "        request write content:'Hello world!'"
+      "src": "        request write content:\"Hello world!\""
     }
   },
   "services": [

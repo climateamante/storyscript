@@ -36,7 +36,7 @@
           ]
         }
       ],
-      "src": "a = ('a' + 'b') contains item: 'c'"
+      "src": "a = (\"a\" + \"b\") contains item: \"c\""
     }
   },
   "entrypoint": "1"

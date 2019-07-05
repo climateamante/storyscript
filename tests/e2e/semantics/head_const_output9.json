@@ -1,0 +1,146 @@
+{
+  "tree": {
+    "1": {
+      "method": "execute",
+      "ln": "1",
+      "output": [
+        "server"
+      ],
+      "service": "http",
+      "command": "server",
+      "enter": "2",
+      "src": "http server as server",
+      "next": "2"
+    },
+    "2": {
+      "method": "when",
+      "ln": "2",
+      "output": [
+        "req"
+      ],
+      "service": "server",
+      "command": "listen",
+      "args": [
+        {
+          "$OBJECT": "arg",
+          "name": "path",
+          "arg": {
+            "$OBJECT": "string",
+            "string": "/"
+          }
+        }
+      ],
+      "enter": "3",
+      "parent": "1",
+      "src": "    when server listen path: \"/\" as req",
+      "next": "3"
+    },
+    "3": {
+      "method": "expression",
+      "ln": "3",
+      "name": [
+        "text"
+      ],
+      "args": [
+        {
+          "$OBJECT": "path",
+          "paths": [
+            "req",
+            {
+              "$OBJECT": "dot",
+              "dot": "body"
+            },
+            {
+              "$OBJECT": "string",
+              "string": "a"
+            },
+            {
+              "$OBJECT": "string",
+              "string": "b"
+            }
+          ]
+        }
+      ],
+      "parent": "2",
+      "src": "        text = req.body[\"a\"][\"b\"]",
+      "next": "4"
+    },
+    "4": {
+      "method": "if",
+      "ln": "4",
+      "args": [
+        {
+          "$OBJECT": "expression",
+          "expression": "equal",
+          "values": [
+            {
+              "$OBJECT": "type_cast",
+              "type": {
+                "$OBJECT": "type",
+                "type": "string"
+              },
+              "value": {
+                "$OBJECT": "path",
+                "paths": [
+                  "text"
+                ]
+              }
+            },
+            {
+              "$OBJECT": "string",
+              "string": "a"
+            }
+          ]
+        }
+      ],
+      "enter": "5",
+      "exit": "6",
+      "parent": "2",
+      "src": "        if text == \"a\"",
+      "next": "5"
+    },
+    "5": {
+      "method": "expression",
+      "ln": "5",
+      "name": [
+        "text"
+      ],
+      "args": [
+        {
+          "$OBJECT": "string",
+          "string": "b"
+        }
+      ],
+      "parent": "4",
+      "src": "            text = \"b\"",
+      "next": "6"
+    },
+    "6": {
+      "method": "else",
+      "ln": "6",
+      "enter": "7",
+      "parent": "2",
+      "src": "        else",
+      "next": "7"
+    },
+    "7": {
+      "method": "expression",
+      "ln": "7",
+      "name": [
+        "text"
+      ],
+      "args": [
+        {
+          "$OBJECT": "string",
+          "string": "c"
+        }
+      ],
+      "parent": "6",
+      "src": "            text = \"c\""
+    }
+  },
+  "services": [
+    "http"
+  ],
+  "entrypoint": "1"
+}

@@ -52,7 +52,7 @@
       ],
       "enter": "5",
       "parent": "1",
-      "src": "\twhen listen path:'/foo'",
+      "src": "\twhen listen path:\"/foo\"",
       "next": "5"
     },
     "5": {
@@ -82,7 +82,7 @@
       ],
       "enter": "7",
       "parent": "1",
-      "src": "\twhen listen path:'/foo' as li",
+      "src": "\twhen listen path:\"/foo\" as li",
       "next": "7"
     },
     "7": {
@@ -164,7 +164,7 @@
       ],
       "enter": "15",
       "parent": "9",
-      "src": "\twhen serv listen path:'/foo'",
+      "src": "\twhen serv listen path:\"/foo\"",
       "next": "15"
     },
     "15": {
@@ -194,7 +194,7 @@
       ],
       "enter": "17",
       "parent": "9",
-      "src": "\twhen serv listen path:'/foo' as li",
+      "src": "\twhen serv listen path:\"/foo\" as li",
       "next": "17"
     },
     "17": {

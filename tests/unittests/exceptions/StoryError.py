@@ -302,6 +302,17 @@ def test_storyerror_unexpected_characters_code_colon(patch, storyerror):
     assert result == ErrorCodes.unnecessary_colon
 
 
+def test_storyerror_unexpected_characters_code_single_quotes(patch,
+                                                             storyerror):
+    patch.init(Intention)
+    patch.object(Intention, 'is_function', return_value=False)
+    patch.object(Intention, 'unnecessary_colon', return_value=False)
+    patch.object(StoryError, 'get_line', return_value="'string'")
+    storyerror.error.column = 1
+    result = storyerror.unexpected_characters_code()
+    assert result == ErrorCodes.single_quotes
+
+
 def test_storyerror_unexpected_characters_expected_block_before(patch,
                                                                 storyerror):
     patch.init(Intention)

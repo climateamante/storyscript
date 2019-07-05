@@ -44,7 +44,7 @@
           ]
         }
       ],
-      "src": "a = {'my_key': 1 increment}"
+      "src": "a = {\"my_key\": 1 increment}"
     }
   },
   "entrypoint": "1.1"

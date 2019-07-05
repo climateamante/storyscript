@@ -12,7 +12,7 @@
           "string": "/root"
         }
       ],
-      "src": "path = '/root'",
+      "src": "path = \"/root\"",
       "next": "2"
     },
     "2": {
@@ -27,7 +27,7 @@
           "string": "get"
         }
       ],
-      "src": "method = 'get'",
+      "src": "method = \"get\"",
       "next": "3"
     },
     "3": {

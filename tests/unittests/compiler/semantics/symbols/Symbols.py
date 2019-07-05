@@ -27,7 +27,7 @@ def test_symbol_pretty_string():
 
 def test_symbol_str_ro_string():
     sym = Symbol('foo', StringType.instance(),
-                 storage_class=StorageClass.read)
+                 storage_class=StorageClass.read())
     assert str(sym) == "Symbol('foo', string, ro)"
 
 

@@ -39,7 +39,7 @@
       ],
       "enter": "2",
       "parent": "1.1",
-      "src": "when http server listen path:'/health' method:'get'",
+      "src": "when http server listen path:\"/health\" method:\"get\"",
       "next": "2"
     },
     "2": {

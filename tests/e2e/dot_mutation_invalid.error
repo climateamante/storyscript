@@ -3,4 +3,4 @@ Error: syntax error in story at line 2, column 5
 2|    s = s.a.foo()
           ^^^
 
-E0104: `string` can't be indexed with `string`
+E0131: `string` can't be dot-accessed with `a` of type `string`

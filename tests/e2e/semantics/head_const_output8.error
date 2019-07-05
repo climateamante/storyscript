@@ -1,0 +1,6 @@
+Error: syntax error in story at line 3, column 5
+
+3|        v["foo"] = 2
+          ^^^^^^^^^^
+
+E0127: `v[]` is readonly and can not be assigned to.

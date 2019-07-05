@@ -1,7 +1,7 @@
 a = 0
-if a increment
+if a.is_odd()
 	x = 0
-else if a decrement
+else if a.is_even()
 	x = 1
 else
 	x = 2

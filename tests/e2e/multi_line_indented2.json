@@ -12,7 +12,7 @@
           "string": "   aaa bbb cc"
         }
       ],
-      "src": "a = '   aaa"
+      "src": "a = \"   aaa"
     }
   },
   "entrypoint": "1"

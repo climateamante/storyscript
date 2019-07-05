@@ -38,7 +38,7 @@
           ]
         }
       ],
-      "src": "pull_request = {'number': 42}",
+      "src": "pull_request = {\"number\": 42}",
       "next": "3.1"
     },
     "3.1": {
@@ -113,7 +113,7 @@
           ]
         }
       ],
-      "src": "diff_url = \"https://github.com/{repo_full_name}/pull/{pull_request['number']}.diff\""
+      "src": "diff_url = \"https://github.com/{repo_full_name}/pull/{pull_request[\\\"number\\\"]}.diff\""
     }
   },
   "entrypoint": "1"

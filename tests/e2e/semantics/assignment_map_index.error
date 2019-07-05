@@ -1,0 +1,6 @@
+Error: syntax error in story at line 2, column 1
+
+2|    a.b = 100
+      ^^^
+
+E0131: `Map[string,int]` can't be dot-accessed with `b` of type `string`

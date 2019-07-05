@@ -272,8 +272,7 @@ class Transformer(LarkTransformer):
         Remove quotes from strings.
         """
         # Lark string still contain the raw quotes around them -> remove
-        if matches[0].type == 'SINGLE_QUOTED' or \
-                matches[0].type == 'DOUBLE_QUOTED':
+        if matches[0].type == 'DOUBLE_QUOTED':
             text = matches[0].value[1:-1]
             # multi-line strings
             text = cls.multi_line_string(text)

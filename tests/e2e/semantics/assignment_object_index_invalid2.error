@@ -1,6 +1,6 @@
 Error: syntax error in story at line 2, column 1
 
 2|    a.foo = 100
-      ^^^^^^^
+      ^^^^^
 
-E0100: Can't assign `int` to `Map[string,int]`
+E0131: `Map[string,Map[string,int]]` can't be dot-accessed with `foo` of type `string`

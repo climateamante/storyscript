@@ -1,6 +1,6 @@
 Error: syntax error in story at line 1, column 5
 
-1|    a = '\
+1|    a = "\
           ^
 
-E0041: `'` is not allowed here
+E0041: `"` is not allowed here

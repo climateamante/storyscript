@@ -61,15 +61,32 @@
       "ln": "1",
       "args": [
         {
-          "$OBJECT": "path",
-          "paths": [
-            "__p-1.1"
+          "$OBJECT": "expression",
+          "expression": "equal",
+          "values": [
+            {
+              "$OBJECT": "type_cast",
+              "type": {
+                "$OBJECT": "type",
+                "type": "int"
+              },
+              "value": {
+                "$OBJECT": "path",
+                "paths": [
+                  "__p-1.1"
+                ]
+              }
+            },
+            {
+              "$OBJECT": "int",
+              "int": 1
+            }
           ]
         }
       ],
       "enter": "2",
       "exit": "3",
-      "src": "if my_service command p1:1 p2: 2",
+      "src": "if (my_service command p1:1 p2: 2) == 1",
       "next": "2"
     },
     "2": {
@@ -93,15 +110,32 @@
       "ln": "3",
       "args": [
         {
-          "$OBJECT": "path",
-          "paths": [
-            "__p-1.2"
+          "$OBJECT": "expression",
+          "expression": "equal",
+          "values": [
+            {
+              "$OBJECT": "type_cast",
+              "type": {
+                "$OBJECT": "type",
+                "type": "int"
+              },
+              "value": {
+                "$OBJECT": "path",
+                "paths": [
+                  "__p-1.2"
+                ]
+              }
+            },
+            {
+              "$OBJECT": "int",
+              "int": 2
+            }
           ]
         }
       ],
       "enter": "4",
       "exit": "5",
-      "src": "else if my_service2 command p3:3 p4:4",
+      "src": "else if (my_service2 command p3:3 p4:4) == 2",
       "next": "4"
     },
     "4": {

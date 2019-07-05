@@ -1,29 +1,14 @@
 {
   "tree": {
     "1": {
-      "method": "expression",
+      "method": "execute",
       "ln": "1",
       "name": [
         "a"
       ],
-      "args": [
-        {
-          "$OBJECT": "dict",
-          "items": [
-            [
-              {
-                "$OBJECT": "string",
-                "string": "b"
-              },
-              {
-                "$OBJECT": "int",
-                "int": 1
-              }
-            ]
-          ]
-        }
-      ],
-      "src": "a = {\"b\": 1}",
+      "service": "my_service",
+      "command": "call",
+      "src": "a = my_service call",
       "next": "2"
     },
     "2": {
@@ -45,5 +30,8 @@
       "src": "a.b = 100"
     }
   },
+  "services": [
+    "my_service"
+  ],
   "entrypoint": "1"
 }

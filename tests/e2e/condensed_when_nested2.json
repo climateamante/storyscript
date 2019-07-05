@@ -32,7 +32,7 @@
       ],
       "enter": "3",
       "parent": "1",
-      "src": "  \twhen log level: 'normal' as logger",
+      "src": "  \twhen log level: \"normal\" as logger",
       "next": "3"
     },
     "3": {
@@ -71,7 +71,7 @@
       ],
       "enter": "5",
       "parent": "1",
-      "src": "  \twhen log level: 'normal'",
+      "src": "  \twhen log level: \"normal\"",
       "next": "5"
     },
     "5": {

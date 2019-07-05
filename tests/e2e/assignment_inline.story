@@ -1,1 +1,1 @@
-(my_service foo) = 'bar'
+(my_service foo) = "bar"

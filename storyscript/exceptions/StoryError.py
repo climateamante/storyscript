@@ -182,6 +182,8 @@ class StoryError(SyntaxError):
             return ErrorCodes.function_misspell
         elif intention.unnecessary_colon():
             return ErrorCodes.unnecessary_colon
+        elif error_column == "'":
+            return ErrorCodes.single_quotes
         elif self.error.allowed is None and \
                 self.is_valid_name_start(error_column):
             return ErrorCodes.block_expected_before

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from storyscript.compiler.semantics.types.Types import NoneType, ObjectType
+from storyscript.compiler.semantics.types.Types import BooleanType, \
+    NoneType, ObjectType
 from storyscript.parser import Tree
 
 from .ExpressionResolver import ExpressionResolver
@@ -56,14 +57,15 @@ class TypeResolver(ScopeSelectiveVisitor):
         self.in_service_block = False
         self.in_when_block = False
         if self.features.globals:
-            self.storage_class_scope = StorageClass.write
+            self.storage_class_scope = StorageClass.write()
         else:
-            self.storage_class_scope = StorageClass.read
+            self.storage_class_scope = StorageClass.read()
 
     def assignment(self, tree, scope):
         target_symbol = self.path_resolver.path(tree.path)
 
-        tree.expect(target_symbol.can_write(), 'readonly_type_assignment',
+        # allow rebindable assignments here
+        tree.expect(target_symbol.can_assign(), 'readonly_type_assignment',
                     left=target_symbol.name())
 
         frag = tree.assignment_fragment
@@ -80,6 +82,7 @@ class TypeResolver(ScopeSelectiveVisitor):
                     'variables_dash', token=token)
 
         if target_symbol.type() == NoneType.instance():
+            storage_class = storage_class.declaration_from_symbol()
             if not target_symbol.is_internal():
                 frag.base_expression.expect(expr_type != NoneType.instance(),
                                             'assignment_type_none')
@@ -176,12 +179,12 @@ class TypeResolver(ScopeSelectiveVisitor):
         output.expect(resolved is None, 'output_unique',
                       name=resolved.name() if resolved else None)
         sym = Symbol.from_path(name, ObjectType.instance(),
-                               storage_class=StorageClass.read)
+                               storage_class=StorageClass.rebindable())
         tree.scope.insert(sym)
 
     def when_block(self, tree, scope):
         tree.scope = Scope(parent=scope)
-        with self.create_scope(tree.scope, storage_class=StorageClass.write):
+        with self.create_scope(tree.scope, storage_class=StorageClass.write()):
             self.implicit_output(tree)
 
             output = tree.service.service_fragment.output
@@ -242,13 +245,17 @@ class TypeResolver(ScopeSelectiveVisitor):
         """
         If blocks don't create a new scope.
         """
-        self.resolver.base_expression(tree.base_expression)
+        self.ensure_boolean_expression
+        self.ensure_boolean_expression(tree, tree.base_expression)
 
     def elseif_block(self, tree, scope):
         """
         Else if blocks don't create a new scope.
         """
-        self.resolver.base_expression(tree.elseif_statement.base_expression)
+        self.ensure_boolean_expression(
+            tree,
+            tree.elseif_statement.base_expression,
+        )
         self.visit_children(tree.nested_block, scope=scope)
 
     def else_block(self, tree, scope):
@@ -256,6 +263,14 @@ class TypeResolver(ScopeSelectiveVisitor):
         Else blocks don't create a new scope.
         """
         self.visit_children(tree.nested_block, scope=scope)
+
+    def ensure_boolean_expression(self, tree, expr):
+        """
+        Ensures that the expression resolves to a boolean.
+        """
+        t = self.resolver.base_expression(expr).type()
+        expr.expect(t == BooleanType.instance(),
+                    'if_expression_boolean', type=t)
 
     def try_block(self, tree, scope):
         tree.scope = Scope(parent=scope)
@@ -274,7 +289,7 @@ class TypeResolver(ScopeSelectiveVisitor):
         tree.scope, return_type = self.function_statement(
             tree.function_statement, scope
         )
-        with self.create_scope(tree.scope, storage_class=StorageClass.write):
+        with self.create_scope(tree.scope, storage_class=StorageClass.write()):
             self.visit_children(tree.nested_block, scope=tree.scope)
             ReturnVisitor.check(tree, tree.scope, return_type,
                                 self.function_table, self.mutation_table)

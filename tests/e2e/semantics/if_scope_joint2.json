@@ -5,13 +5,29 @@
       "ln": "1",
       "args": [
         {
-          "$OBJECT": "int",
-          "int": 0
+          "$OBJECT": "expression",
+          "expression": "not",
+          "values": [
+            {
+              "$OBJECT": "expression",
+              "expression": "less_equal",
+              "values": [
+                {
+                  "$OBJECT": "int",
+                  "int": 1
+                },
+                {
+                  "$OBJECT": "int",
+                  "int": 0
+                }
+              ]
+            }
+          ]
         }
       ],
       "enter": "2",
       "exit": "3",
-      "src": "if 0",
+      "src": "if 1 > 0",
       "next": "2"
     },
     "2": {
@@ -35,13 +51,23 @@
       "ln": "3",
       "args": [
         {
-          "$OBJECT": "int",
-          "int": 0
+          "$OBJECT": "expression",
+          "expression": "less",
+          "values": [
+            {
+              "$OBJECT": "int",
+              "int": 1
+            },
+            {
+              "$OBJECT": "int",
+              "int": 0
+            }
+          ]
         }
       ],
       "enter": "4",
       "exit": "5",
-      "src": "else if 0",
+      "src": "else if 1 < 0",
       "next": "4"
     },
     "4": {

@@ -14,7 +14,7 @@
           "args": []
         }
       ],
-      "src": "'hello' length"
+      "src": "\"hello\" length"
     }
   },
   "entrypoint": "1"

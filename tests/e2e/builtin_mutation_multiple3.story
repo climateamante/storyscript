@@ -1,2 +1,2 @@
 message = "foo"
-username = message.trim.split(by: "whitelist ")
+username = message.trim().split(by: "whitelist ")

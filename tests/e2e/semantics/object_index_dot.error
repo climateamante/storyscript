@@ -1,6 +1,6 @@
 Error: syntax error in story at line 2, column 1
 
 2|    a.b = 0
-      ^^^^^
+      ^^^
 
-E0100: Can't assign `int` to `boolean`
+E0131: `Map[string,boolean]` can't be dot-accessed with `b` of type `string`

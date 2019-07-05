@@ -1,6 +1,0 @@
-Error: syntax error in story at line 2, column 12
-
-2|    username = message.trim.split(by: "whitelist ")
-                 ^^^^^^^^^^^^
-
-E0104: `string` can't be indexed with `string`

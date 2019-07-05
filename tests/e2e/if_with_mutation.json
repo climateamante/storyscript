@@ -30,7 +30,7 @@
         },
         {
           "$OBJECT": "mutation",
-          "mutation": "increment",
+          "mutation": "is_odd",
           "args": []
         }
       ],
@@ -51,7 +51,7 @@
         },
         {
           "$OBJECT": "mutation",
-          "mutation": "decrement",
+          "mutation": "is_even",
           "args": []
         }
       ],
@@ -70,7 +70,7 @@
       ],
       "enter": "3",
       "exit": "4",
-      "src": "if a increment",
+      "src": "if a.is_odd()",
       "next": "3"
     },
     "3": {
@@ -102,7 +102,7 @@
       ],
       "enter": "5",
       "exit": "6",
-      "src": "else if a decrement",
+      "src": "else if a.is_even()",
       "next": "5"
     },
     "5": {

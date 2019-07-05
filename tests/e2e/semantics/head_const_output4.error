@@ -1,0 +1,6 @@
+Error: syntax error in story at line 2, column 8
+
+2|           res["body"] = "foo"
+             ^^^^^^^^^^^^^
+
+E0127: `res[]` is readonly and can not be assigned to.

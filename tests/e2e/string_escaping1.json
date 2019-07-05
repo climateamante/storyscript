@@ -12,22 +12,7 @@
           "string": "{}"
         }
       ],
-      "src": "hello = \"\\{\\}\"",
-      "next": "2"
-    },
-    "2": {
-      "method": "expression",
-      "ln": "2",
-      "name": [
-        "hello"
-      ],
-      "args": [
-        {
-          "$OBJECT": "string",
-          "string": "{}"
-        }
-      ],
-      "src": "hello = '\\{\\}'"
+      "src": "hello = \"\\{\\}\""
     }
   },
   "entrypoint": "1"

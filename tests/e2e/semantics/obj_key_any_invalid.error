@@ -3,4 +3,4 @@ Error: syntax error in story at line 4, column 5
 4|    b = ANY[t]
           ^^^^^
 
-E0104: `any` can't be indexed with `regexp`
+E0104: `any` can't be indexed with `t` of type `regexp`

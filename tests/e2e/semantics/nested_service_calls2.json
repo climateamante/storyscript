@@ -40,7 +40,7 @@
       ],
       "enter": "3.1",
       "parent": "1",
-      "src": "    when client listen method:'get' path:'/' as request",
+      "src": "    when client listen method:\"get\" path:\"/\" as request",
       "next": "3.1"
     },
     "3.1": {
@@ -132,7 +132,7 @@
         }
       ],
       "parent": "2",
-      "src": "        a = (request fetch url:'foo-url') + (request fetch url:'bar-url')"
+      "src": "        a = (request fetch url:\"foo-url\") + (request fetch url:\"bar-url\")"
     }
   },
   "services": [

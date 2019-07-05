@@ -237,12 +237,16 @@
           "paths": [
             "obj",
             {
-              "$OBJECT": "dot",
-              "dot": "b"
+              "$OBJECT": "path",
+              "paths": [
+                "b"
+              ]
             },
             {
-              "$OBJECT": "dot",
-              "dot": "c"
+              "$OBJECT": "path",
+              "paths": [
+                "c"
+              ]
             }
           ]
         }
@@ -284,7 +288,7 @@
           ]
         }
       ],
-      "src": "t4 = \"hello\\{with\\}\\{{obj.b.c} paths\""
+      "src": "t4 = \"hello\\{with\\}\\{{obj[b][c]} paths\""
     }
   },
   "entrypoint": "1"

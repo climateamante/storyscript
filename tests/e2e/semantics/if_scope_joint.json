@@ -5,13 +5,23 @@
       "ln": "1",
       "args": [
         {
-          "$OBJECT": "int",
-          "int": 0
+          "$OBJECT": "expression",
+          "expression": "equal",
+          "values": [
+            {
+              "$OBJECT": "int",
+              "int": 0
+            },
+            {
+              "$OBJECT": "int",
+              "int": 0
+            }
+          ]
         }
       ],
       "enter": "2",
       "exit": "3",
-      "src": "if 0",
+      "src": "if 0 == 0",
       "next": "2"
     },
     "2": {

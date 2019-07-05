@@ -1,6 +1,6 @@
 Error: syntax error in story at line 1, column 2
 
-1|    (my_service foo) = 'bar'
+1|    (my_service foo) = "bar"
        ^^^^^^^^^^
 
 E0063: Can't assign to inline expressions.

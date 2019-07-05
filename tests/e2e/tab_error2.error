@@ -1,6 +1,6 @@
 Error: syntax error in story at line 2, column 7
 
-2|        a = '{}  '
+2|        a = "{}  "
               ^^^^^^
 
 E0060: String templates can't be empty

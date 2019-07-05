@@ -1,0 +1,72 @@
+{
+  "tree": {
+    "1": {
+      "method": "execute",
+      "ln": "1",
+      "name": [
+        "a"
+      ],
+      "service": "my_service",
+      "command": "call",
+      "src": "a = my_service call",
+      "next": "2.1"
+    },
+    "2.1": {
+      "method": "expression",
+      "ln": "2.1",
+      "name": [
+        "__p-2.1"
+      ],
+      "args": [
+        {
+          "$OBJECT": "path",
+          "paths": [
+            "a",
+            {
+              "$OBJECT": "dot",
+              "dot": "b"
+            }
+          ]
+        }
+      ],
+      "next": "2"
+    },
+    "2": {
+      "method": "expression",
+      "ln": "2",
+      "name": [
+        "b"
+      ],
+      "args": [
+        {
+          "$OBJECT": "expression",
+          "expression": "sum",
+          "values": [
+            {
+              "$OBJECT": "string",
+              "string": "foo"
+            },
+            {
+              "$OBJECT": "type_cast",
+              "type": {
+                "$OBJECT": "type",
+                "type": "string"
+              },
+              "value": {
+                "$OBJECT": "path",
+                "paths": [
+                  "__p-2.1"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "src": "b = \"foo{a.b}\""
+    }
+  },
+  "services": [
+    "my_service"
+  ],
+  "entrypoint": "1"
+}

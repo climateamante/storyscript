@@ -1,6 +1,6 @@
 Error: syntax error in story at line 2, column 3
 
-2|    ((0 == 1)) + (d['a'])
+2|    ((0 == 1)) + (d["a"])
         ^^^^^^^^^^^^^
 
 E0103: `+` between `boolean` and `int` is not supported.

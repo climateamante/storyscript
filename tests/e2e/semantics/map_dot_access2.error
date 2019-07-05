@@ -1,0 +1,6 @@
+Error: syntax error in story at line 2, column 5
+
+2|    b = a["b"].c
+          ^^^^^^^^
+
+E0131: `string` can't be dot-accessed with `c` of type `string`

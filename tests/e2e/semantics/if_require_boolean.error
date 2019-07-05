@@ -1,0 +1,6 @@
+Error: syntax error in story at line 2, column 4
+
+2|    if arr
+         ^^^
+
+E0130: If expression must evaluate to a `boolean`, but is `List[int]`

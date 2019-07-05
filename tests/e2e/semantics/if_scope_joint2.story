@@ -1,6 +1,6 @@
-if 0
+if 1 > 0
 	originalCount = 0
-else if 0
+else if 1 < 0
 	originalCount = 0
 else
 	originalCount = 0
