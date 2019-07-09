@@ -12,9 +12,6 @@ the list of services used by each story::
                 "functions": {
                     "name": "1"
                 },
-                "modules": {
-                    "Foo": "foo.story"
-                },
                 "version": "0.5.0"
             },
             "foo.story": {

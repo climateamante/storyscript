@@ -16,7 +16,7 @@ def syntax_error(patch):
 
 def test_transformer():
     keywords = ['function', 'if', 'else', 'foreach', 'return', 'returns',
-                'try', 'catch', 'finally', 'when', 'as', 'import', 'while',
+                'try', 'catch', 'finally', 'when', 'as', 'while',
                 'throw', 'null']
     future_keywords = [
         'async', 'story', 'assert', 'called', 'mock', 'class', 'extends',
@@ -24,7 +24,7 @@ def test_transformer():
         'const', 'immutable', 'let', 'var', 'auto', 'immutable', 'switch',
         'module', 'package', 'final', 'this', 'self', 'case', 'abstract',
         'static', 'none', 'await', 'service', 'in', 'has', 'not', 'is', 'inf',
-        'nan', 'unknown'
+        'nan', 'unknown', 'import'
     ]
     assert Transformer.reserved_keywords == keywords
     assert Transformer.future_reserved_keywords == future_keywords
@@ -33,7 +33,7 @@ def test_transformer():
 
 @mark.parametrize('keyword', [
     'function', 'if', 'else', 'foreach', 'return', 'returns', 'try', 'catch',
-    'finally', 'when', 'as', 'import', 'while', 'throw'
+    'finally', 'when', 'as', 'while', 'throw', 'null'
 ])
 def test_transformer_is_keyword(syntax_error, keyword):
     token = Token('any', keyword)

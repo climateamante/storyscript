@@ -80,13 +80,6 @@ def test_compiler_function_output(patch, compiler, tree):
     assert result == [Objects.types()['types']]
 
 
-def test_compiler_imports(patch, compiler, lines, tree):
-    compiler.lines.modules = {}
-    compiler.imports(tree, '1')
-    module = tree.child(1).value
-    assert lines.modules[module] == tree.string.child(0).value[1:-1]
-
-
 def test_compiler_absolute_expression(patch, compiler, lines, tree):
     patch.object(Objects, 'expression')
     compiler.absolute_expression(tree, '1')
@@ -245,25 +238,6 @@ def test_compiler_call_expression_no_invalid_path(patch, compiler, tree):
     compiler.call_expression(tree, 'parent')
     assert error_code == 'function_call_invalid_path'
     assert args == {'name': 'a.b'}
-
-
-def test_compiler_call_expression_other_module(patch, compiler, tree):
-    """
-    Ensures that function call expression checks its arguments correctly
-    when calling a function from another module
-    """
-    patch.many(Objects, ['arguments', 'names'])
-
-    def expect(cond, _error_code, **_args):
-        assert cond, _error_code
-
-    Objects.names.return_value = ['path']
-    tree.expect = expect
-    tree.path.inline_expression = None
-    tree.path.extract_path.return_value = 'my_module.my_function'
-    compiler.lines.modules = ['my_module']
-
-    compiler.call_expression(tree, 'parent')
 
 
 def test_compiler_service(patch, compiler, lines, tree):
@@ -797,7 +771,7 @@ def test_compiler_break_statement_outside(patch, compiler, lines, tree):
 @mark.parametrize('method_name', [
     'service_block', 'absolute_expression', 'assignment', 'if_block',
     'elseif_block', 'else_block', 'foreach_block', 'function_block',
-    'when_block', 'try_block', 'return_statement', 'arguments', 'imports',
+    'when_block', 'try_block', 'return_statement', 'arguments',
     'mutation_block', 'indented_chain', 'break_statement'
 ])
 def test_compiler_subtree(patch, compiler, method_name):
@@ -854,5 +828,5 @@ def test_compiler_compile(patch, magic):
     lines = JSONCompiler(story=None).lines
     expected = {'tree': lines.lines, 'version': version,
                 'services': lines.get_services(), 'functions': lines.functions,
-                'entrypoint': lines.entrypoint(), 'modules': lines.modules}
+                'entrypoint': lines.entrypoint()}
     assert result == expected

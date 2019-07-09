@@ -17,7 +17,6 @@ def test_lines_init(lines):
     assert lines.services == []
     assert lines.functions == {}
     assert lines.output_scopes == {}
-    assert lines.modules == {}
 
 
 def test_lines_first(patch, lines):

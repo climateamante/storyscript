@@ -119,23 +119,6 @@ def test_story_parse_error(patch, story, parser, error):
     Story.error.assert_called_with(error)
 
 
-def test_story_modules(magic, story):
-    import_tree = magic()
-    story.tree = magic()
-    story.tree.find_data.return_value = [import_tree]
-    result = story.modules()
-    assert result == [import_tree.string.child().value[1:-1]]
-
-
-def test_story_modules_no_extension(magic, story):
-    import_tree = magic()
-    import_tree.string.child.return_value = magic(value='"hello"')
-    story.tree = magic()
-    story.tree.find_data.return_value = [import_tree]
-    result = story.modules()
-    assert result == ['hello.story']
-
-
 def test_story_compile(patch, story, compiler):
     story.compile()
     Compiler.compile.assert_called_with(story.tree, story=story, features=None)

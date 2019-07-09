@@ -14,7 +14,6 @@ class Lines:
         self.services = []
         self.functions = {}
         self.output_scopes = {}
-        self.modules = {}
         self.finished_scopes = []
 
     def entrypoint(self):

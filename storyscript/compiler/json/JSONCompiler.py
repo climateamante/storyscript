@@ -54,13 +54,6 @@ class JSONCompiler:
             output_types = self.objects.types(function_output.types)
             return [output_types['type']]
 
-    def imports(self, tree, parent):
-        """
-        Compiles an import rule
-        """
-        module = tree.child(1).value
-        self.lines.modules[module] = tree.string.child(0).value[1:-1]
-
     def absolute_expression(self, tree, parent):
         """
         Compiles an absolute expression using Compiler.expression
@@ -411,8 +404,8 @@ class JSONCompiler:
                          'if_block', 'elseif_block', 'else_block',
                          'foreach_block', 'function_block', 'when_block',
                          'try_block', 'return_statement', 'arguments',
-                         'imports', 'while_block', 'throw_statement',
-                         'break_statement', 'mutation_block', 'indented_chain']
+                         'while_block', 'throw_statement', 'break_statement',
+                         'mutation_block', 'indented_chain']
         if tree.data in allowed_nodes:
             getattr(self, tree.data)(tree, parent)
         else:
@@ -433,5 +426,5 @@ class JSONCompiler:
         self.parse_tree(tree)
         lines = self.lines
         return {'tree': lines.lines, 'services': lines.get_services(),
-                'entrypoint': lines.entrypoint(), 'modules': lines.modules,
-                'functions': lines.functions, 'version': version}
+                'entrypoint': lines.entrypoint(), 'functions': lines.functions,
+                'version': version}

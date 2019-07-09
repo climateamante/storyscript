@@ -122,18 +122,15 @@ class Bundle:
         for storypath in stories:
             story = self.load_story(storypath)
             story.parse(parser=parser, lower=lower)
-            self.parse(story.modules(), parser=parser, lower=lower)
             self.stories[storypath] = story.tree
 
     def compile(self, stories, parser):
         """
-        Reads and parses a story, then compiles its modules and finally
-        compiles the story itself.
+        Reads, parses and compiles the story.
         """
         for storypath in stories:
             story = self.load_story(storypath)
             story.parse(parser=parser)
-            self.compile(story.modules(), parser=parser)
             story.compile()
             self.stories[storypath] = story.compiled
 

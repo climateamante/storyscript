@@ -7,18 +7,6 @@ class Intention:
     def __init__(self, line):
         self.line = line
 
-    def imports(self):
-        """
-        Whether the intention is to spell "import". Starts at "im", ends at
-        "import"
-        """
-        line = self.line.strip()
-        if line.startswith('im'):
-            if line.startswith('import') is False:
-                return True
-        elif line == '':
-            return True
-
     def assignment(self):
         """
         Whether the intention is to spell an assignment. Starts at "x=".

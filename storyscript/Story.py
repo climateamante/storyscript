@@ -88,18 +88,6 @@ class Story:
         except UnexpectedInput as error:
             raise self.error(error) from error
 
-    def modules(self):
-        """
-        Gets the modules of a story from its tree.
-        """
-        modules = []
-        for module in self.tree.find_data('imports'):
-            path = module.string.child(0).value[1:-1]
-            if path.endswith('.story') is False:
-                path = '{}.story'.format(path)
-            modules.append(path)
-        return modules
-
     def compile(self):
         """
         Compiles the story and stores the result.

@@ -105,11 +105,6 @@ class Grammar:
         self.ebnf.assignment = ('types? (path | assignment_destructoring ) '
                                 'assignment_fragment')
 
-    def imports(self):
-        self.ebnf._AS = 'as'
-        self.ebnf._IMPORT = 'import'
-        self.ebnf.imports = 'import string as name'
-
     def expressions(self):
 
         self.ebnf.POWER = '^'
@@ -117,6 +112,8 @@ class Grammar:
 
         self.ebnf.OR = 'or'
         self.ebnf.AND = 'and'
+
+        self.ebnf._AS = 'as'
 
         self.ebnf.GREATER = '>'
         self.ebnf.GREATER_EQUAL = '>='
@@ -174,7 +171,7 @@ class Grammar:
         self.ebnf.return_statement = 'return base_expression?'
         self.ebnf.break_statement = 'break'
         self.ebnf.entity = 'values, path'
-        rules = ('absolute_expression, assignment, imports, return_statement, '
+        rules = ('absolute_expression, assignment, return_statement, '
                  'throw_statement, break_statement, block')
         self.ebnf.rules = rules
 
@@ -272,7 +269,6 @@ class Grammar:
         self.types()
         self.values()
         self.assignments()
-        self.imports()
         self.expressions()
         self.rules()
         self.mutation_block()

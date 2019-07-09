@@ -9,17 +9,6 @@ def test_intention_init():
     assert intention.line == 'line'
 
 
-@mark.parametrize('line', ['', 'im', 'im ', 'impor'])
-def test_intention_imports(line):
-    intention = Intention(line)
-    assert intention.imports() is True
-
-
-def test_intention_imports_not():
-    intention = Intention('import')
-    assert intention.imports() is None
-
-
 @mark.parametrize('line', ['x=', 'x =', 'x= '])
 def test_intention_assignment(line):
     intention = Intention(line)

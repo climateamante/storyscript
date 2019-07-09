@@ -22,7 +22,6 @@ path: NAME (path_fragment)* | inline_expression (path_fragment)*
 assignment_fragment: EQUALS base_expression
 assignment_destructoring: _OCB (_NL _INDENT)? (path (_COMMA _NL? path)*)? (_NL _DEDENT)? _CCB
 assignment: types? (path | assignment_destructoring ) assignment_fragment
-imports: _IMPORT string _AS NAME
 cmp_operator: GREATER| GREATER_EQUAL| LESSER| LESSER_EQUAL| NOT_EQUAL| EQUAL
 arith_operator: PLUS| DASH
 unary_operator: NOT
@@ -45,7 +44,7 @@ base_expression: (expression| inline_service| mutation)
 return_statement: RETURN base_expression?
 break_statement: BREAK
 entity: values| path
-rules: absolute_expression| assignment| imports| return_statement| throw_statement| break_statement| block
+rules: absolute_expression| assignment| return_statement| throw_statement| break_statement| block
 mutation_fragment: NAME arguments*
 chained_mutation: _THEN mutation_fragment
 mutation: primary_expression (mutation_fragment (chained_mutation)*)
@@ -125,12 +124,11 @@ _OP: "("
 _CP: ")"
 EQUALS: "="
 _DOT: "."
-_AS: "as"
-_IMPORT: "import"
 POWER: "^"
 NOT: "!"
 OR: "or"
 AND: "and"
+_AS: "as"
 GREATER: ">"
 GREATER_EQUAL: ">="
 LESSER: "<"

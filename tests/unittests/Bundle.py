@@ -198,7 +198,6 @@ def test_bundle_parse(patch, bundle):
     parse(['one.story'], None, lower=False)
     Bundle.load_story.assert_called_with('one.story')
     story = Bundle.load_story()
-    Bundle.parse.assert_called_with(story.modules(), parser=None, lower=False)
     assert bundle.stories['one.story'] == story.tree
 
 
@@ -211,7 +210,6 @@ def test_bundle_compile(mocker, patch, bundle):
     Bundle.load_story.assert_called_with('one.story')
 
     story = Bundle.load_story()
-    Bundle.compile.assert_called_with(story.modules(), parser=None)
     story.compile.assert_called()
     assert bundle.stories['one.story'] == story.compiled
 
