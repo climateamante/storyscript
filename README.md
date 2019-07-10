@@ -9,7 +9,7 @@
 <img src="https://user-images.githubusercontent.com/4370550/56803568-460e5800-6823-11e9-8a70-25ab4b7e32ea.png" width="275">
 </div>
 
-## &#x1F44B; Meet Storyscript
+## :wave: Meet Storyscript
 The [DSL](https://en.wikipedia.org/wiki/Domain-specific_language) for **Application Storytelling**.
 Develop rapidly, deploy natively to the cloud and focus on what matters most: business-logic.
 Designed with :heart: by [Storyscript](https://storyscript.io) on a mission to bring application development to the next level.
@@ -31,9 +31,9 @@ when http server listen path: '/' as request     # Serverless
 $ story deploy  # Zero-devop deployments into Kubernetes
 ```
 
-&#x1F4AF;Open Source for a delicious application development. :sparkles::cake::sparkles:
+:100:Open Source for a delicious application development. :sparkles::cake::sparkles:
 
-> &#x1F680;Choose: hosted **Storyscript Cloud** or `helm install story` for on-premises deployments.
+> :rocket:Choose: hosted **Storyscript Cloud** or `helm install story` for on-premises deployments.
 
 ## Installation
 
