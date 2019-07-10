@@ -70,14 +70,15 @@ class Story:
         """
         return StoryError(error, self, path=self.path)
 
-    def parse(self, parser, lower=False):
+    def parse(self, parser, lower=False, allow_single_quotes=False):
         """
         Parses the story, storing the tree
         """
         if parser is None:
             parser = self._parser()
         try:
-            self.tree = parser.parse(self.story)
+            self.tree = parser.parse(self.story,
+                                     allow_single_quotes=allow_single_quotes)
             if lower:
                 proc = Lowering(parser, features=self.features)
                 self.tree = proc.process(self.tree)

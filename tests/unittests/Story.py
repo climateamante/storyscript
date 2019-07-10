@@ -86,19 +86,24 @@ def test_story_error(patch, story):
 
 def test_story_parse(patch, story, parser):
     story.parse(parser=parser)
-    parser.parse.assert_called_with(story.story)
+    parser.parse.assert_called_with(story.story, allow_single_quotes=False)
     assert story.tree == Parser.parse()
 
 
 def test_story_parse_debug(patch, story, parser):
     story.parse(parser=parser)
-    parser.parse.assert_called_with(story.story)
+    parser.parse.assert_called_with(story.story, allow_single_quotes=False)
+
+
+def test_story_parse_debug_single_quotes(patch, story, parser):
+    story.parse(parser=parser, allow_single_quotes=True)
+    parser.parse.assert_called_with(story.story, allow_single_quotes=True)
 
 
 def test_story_parse_lower(patch, story, parser):
     patch.object(Lowering, 'process')
     story.parse(parser=parser, lower=True)
-    parser.parse.assert_called_with(story.story)
+    parser.parse.assert_called_with(story.story, allow_single_quotes=False)
     Lowering.process.assert_called_with(Parser.parse())
     assert story.tree == Lowering.process(Lowering.process())
 

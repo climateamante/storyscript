@@ -12,7 +12,7 @@ def parse(source, lower=False):
     """
     Don't regenerate the parser on every call
     """
-    tree = _parser().parse(source)
+    tree = _parser().parse(source, allow_single_quotes=False)
     if not lower:
         return tree
     return Lowering(parser=tree.parser, features={}).process(tree)

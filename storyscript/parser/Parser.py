@@ -27,11 +27,11 @@ class Parser:
         return CustomIndenter()
 
     @staticmethod
-    def transformer():
+    def transformer(allow_single_quotes):
         """
         Initialize the transformer
         """
-        return Transformer()
+        return Transformer(allow_single_quotes=allow_single_quotes)
 
     def grammar(self):
         if self.ebnf:
@@ -45,7 +45,7 @@ class Parser:
         """
         return Lark(self.grammar(), parser=self.algo, postlex=self.indenter())
 
-    def parse(self, source):
+    def parse(self, source, allow_single_quotes):
         """
         Parses the source string.
         """
@@ -54,7 +54,7 @@ class Parser:
         source = '{}\n'.format(source)
         lark = self.lark
         tree = lark.parse(source)
-        result = self.transformer().transform(tree)
+        result = self.transformer(allow_single_quotes).transform(tree)
         result.parser = self
         return result
 

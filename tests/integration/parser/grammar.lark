@@ -6,7 +6,7 @@ boolean: TRUE| FALSE
 void: NULL
 number: INT| FLOAT
 time: RAW_TIME
-string: DOUBLE_QUOTED| DOUBLE_QUOTED_HEREDOC
+string: SINGLE_QUOTED| DOUBLE_QUOTED| DOUBLE_QUOTED_HEREDOC
 !list: _OSB (_NL _INDENT)? (base_expression (_COMMA _NL? base_expression)*)? (_NL _DEDENT)? _CSB
 key_value: (string| path| number| boolean) _COLON base_expression
 map: _OCB (_NL _INDENT)? (key_value (_COMMA _NL? key_value)*)? (_NL _DEDENT)? _CCB
@@ -112,6 +112,7 @@ NULL: "null"
 RAW_INT.2: /[0-9]+/
 INT.2: ("+"|"-")? RAW_INT
 FLOAT.2: ("+"|"-")? INT "." RAW_INT? | "." RAW_INT
+SINGLE_QUOTED: /'([^'\\]*(?:\\(.|\n)[^'\\]*)*)'/
 DOUBLE_QUOTED: /"([^"\\]*(?:\\(.|\n)[^"\\]*)*)"/
 DOUBLE_QUOTED_HEREDOC.2: /"""(.|\n)*?"""/
 REGEXP.10: /\/([^\/]*)\/g?i?m?s?u?y?/

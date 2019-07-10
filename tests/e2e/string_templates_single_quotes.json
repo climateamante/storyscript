@@ -1,0 +1,73 @@
+{
+  "tree": {
+    "1": {
+      "method": "expression",
+      "ln": "1",
+      "name": [
+        "worldVar"
+      ],
+      "args": [
+        {
+          "$OBJECT": "dict",
+          "items": []
+        }
+      ],
+      "src": "worldVar = {}",
+      "next": "2.1"
+    },
+    "2.1": {
+      "method": "expression",
+      "ln": "2.1",
+      "name": [
+        "__p-2.1"
+      ],
+      "args": [
+        {
+          "$OBJECT": "path",
+          "paths": [
+            "worldVar",
+            {
+              "$OBJECT": "string",
+              "string": "myKey"
+            }
+          ]
+        }
+      ],
+      "next": "2"
+    },
+    "2": {
+      "method": "expression",
+      "ln": "2",
+      "name": [
+        "a"
+      ],
+      "args": [
+        {
+          "$OBJECT": "expression",
+          "expression": "sum",
+          "values": [
+            {
+              "$OBJECT": "string",
+              "string": "hello "
+            },
+            {
+              "$OBJECT": "type_cast",
+              "type": {
+                "$OBJECT": "type",
+                "type": "string"
+              },
+              "value": {
+                "$OBJECT": "path",
+                "paths": [
+                  "__p-2.1"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "src": "a = \"hello {worldVar['myKey']}\""
+    }
+  },
+  "entrypoint": "1"
+}

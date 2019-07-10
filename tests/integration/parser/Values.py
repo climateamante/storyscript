@@ -9,7 +9,7 @@ def parse(source):
     """
     Don't regenerate the parser on every call
     """
-    return _parser().parse(source)
+    return _parser().parse(source, allow_single_quotes=False)
 
 
 def get_entity(obj):

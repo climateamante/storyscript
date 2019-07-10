@@ -25,6 +25,9 @@ class Transformer(LarkTransformer):
         'nan', 'unknown', 'import'
     ]
 
+    def __init__(self, allow_single_quotes=False):
+        self.allow_single_quotes = allow_single_quotes
+
     @classmethod
     def is_keyword(cls, token):
         keyword = token.value
@@ -266,20 +269,23 @@ class Transformer(LarkTransformer):
 
         return buf
 
-    @classmethod
-    def string(cls, matches):
+    def string(self, matches):
         """
         Remove quotes from strings.
         """
+        tree = Tree('string', matches)
         # Lark string still contain the raw quotes around them -> remove
-        if matches[0].type == 'DOUBLE_QUOTED':
+        if matches[0].type == 'SINGLE_QUOTED' or \
+                matches[0].type == 'DOUBLE_QUOTED':
             text = matches[0].value[1:-1]
             # multi-line strings
-            text = cls.multi_line_string(text)
+            text = self.multi_line_string(text)
+            if matches[0].type == 'SINGLE_QUOTED':
+                tree.expect(self.allow_single_quotes, 'single_quotes')
         else:
             text = matches[0].value[3:-3]
         matches[0].value = text
-        return Tree('string', matches)
+        return tree
 
     @staticmethod
     def argument_shorthand(tree):

@@ -45,7 +45,7 @@ def test_parser_indenter(patch):
 
 def test_parser_transfomer(patch):
     patch.init(Transformer)
-    result = Parser.transformer()
+    result = Parser.transformer(allow_single_quotes=False)
     assert isinstance(result, Transformer)
 
 
@@ -82,7 +82,7 @@ def test_parser_parse(patch, parser):
     Ensures the build method can build the grammar
     """
     patch.many(Parser, ['transformer'])
-    result = parser.parse('source')
+    result = parser.parse('source', allow_single_quotes=False)
     parser.lark.parse.assert_called_with('source\n')
     Parser.transformer().transform.assert_called_with(parser.lark.parse())
     assert result == Parser.transformer().transform()
@@ -92,7 +92,7 @@ def test_parser_parse_empty(patch, parser, magic):
     """
     Ensures that empty stories are parsed correctly
     """
-    assert parser.parse('') == Tree('empty', [])
+    assert parser.parse('', allow_single_quotes=False) == Tree('empty', [])
 
 
 def test_parser_lex(patch, parser):

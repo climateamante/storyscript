@@ -56,6 +56,7 @@ class Grammar:
         self.ebnf.set_token('INT.2', '("+"|"-")? RAW_INT')
         self.ebnf.set_token('FLOAT.2', '("+"|"-")? INT "." RAW_INT? | '
                             '"." RAW_INT')
+        self.ebnf.SINGLE_QUOTED = r"/'([^'\\]*(?:\\(.|\n)[^'\\]*)*)'/"
         self.ebnf.DOUBLE_QUOTED = r'/"([^"\\]*(?:\\(.|\n)[^"\\]*)*)"/'
         self.ebnf.set_token('DOUBLE_QUOTED_HEREDOC.2', r'/"""(.|\n)*?"""/')
         self.ebnf.set_token('REGEXP.10', r'/\/([^\/]*)\/g?i?m?s?u?y?/')
@@ -70,7 +71,10 @@ class Grammar:
         self.ebnf.void = 'null'
         self.ebnf.number = 'int, float'
         self.ebnf.time = 'raw_time'
-        self.ebnf.string = 'double_quoted, double_quoted_heredoc'
+
+        self.ebnf.string = ('single_quoted, double_quoted, '
+                            'double_quoted_heredoc')
+
         list = self.ebnf.collection('osb', 'base_expression',
                                     'base_expression', 'csb')
         self.ebnf.set_rule('!list', list)

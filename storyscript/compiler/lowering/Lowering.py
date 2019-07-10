@@ -247,7 +247,7 @@ class Lowering:
         # resulting tokens.
         from storyscript.Story import Story
         story = Story(' ' * column + code_string, features=self.features)
-        story.parse(self.parser)
+        story.parse(self.parser, allow_single_quotes=True)
         new_node = story.tree
 
         new_node = new_node.block
